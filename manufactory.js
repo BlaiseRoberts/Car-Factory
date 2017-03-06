@@ -4,6 +4,7 @@
  */
 function Car () {
   // Create the manufactured date property (see above)
+  this.manufactured_date = Date.now();
 }
 
 /*
@@ -14,9 +15,10 @@ function Car () {
  */
 function YourFavoriteMake () {
   // Define the manufacturer instance variable
+  this.manufacturer = "Ford";
 }
 // Set the prototype to a new Car instance
-
+YourFavoriteMake.prototype = new Car();
 
 /*
   1. Create a constructor function named after your favorite car model.
@@ -25,10 +27,11 @@ function YourFavoriteMake () {
         car model (e.g. horsepower, cargo capacity, etc.)
 */
 function YourFavoriteModel () {
+  this.wheels = 4;
 
 }
 // Set the prototype to appropriate model you created above and set the model name argument
-YourFavoriteModel.prototype = new ???;
+YourFavoriteModel.prototype = new YourFavoriteMake();
 
 /*
     Being an avid car collector, you own three different cars all of
@@ -38,9 +41,17 @@ YourFavoriteModel.prototype = new ???;
     2. Create a new property on each object to hold the license plate
        number for each car.
 */
-var myFirstFavoriteCar = new ???;
-myFirstFavoriteCar.plate_number = "";
-...
+var myFirstFavoriteCar = new YourFavoriteModel();
+myFirstFavoriteCar.plate_number = "crayzb";
+console.log(myFirstFavoriteCar);
+var mySecondFavoriteCar = new YourFavoriteModel();
+mySecondFavoriteCar.plate_number = "1man2b";
+console.log(mySecondFavoriteCar);
+var myThirdFavoriteCar = new YourFavoriteModel();
+myThirdFavoriteCar.plate_number = "b1g0ne";
+console.log(myThirdFavoriteCar);
+var prop = 'manufacturer' in myFirstFavoriteCar;
+console.log(prop);
 
 
 /*
@@ -49,16 +60,24 @@ myFirstFavoriteCar.plate_number = "";
   your first model was Fusion, make another one here for F150, for example.
  */
 function AnotherModel () {
-
+  this.wheels = 2;
 }
 /*
   Assign the prototype to the make you define above. Now both models will
   inherit the `manufacturer` property from the make function.
  */
-
+AnotherModel.prototype = new YourFavoriteMake;
 
 
 /*
   Now create an instance of this new car model to put in your garage. Remember
   to give it a plate number.
  */
+
+var anotherCar = new AnotherModel();
+anotherCar.plate_number = "lst0n3"
+console.log(anotherCar);
+
+
+
+
